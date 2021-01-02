@@ -1,0 +1,11 @@
+.UiComponent {}
+.UiComponent__NavBar {}
+.UiComponent__Panes {
+    display: block;
+}
+.UiComponent__PropertyPanel {
+    display: block;
+}
+.UiComponent__Workspace {
+    display: block;
+}

@@ -1,0 +1,26 @@
+{
+  "name": "openforms",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "clean": "npm-run-all clean:*",
+    "clean:modules": "lerna clean -y",
+    "clean:build": "rimraf packages/*/dist",
+    "clean:tsbuildinfo": "rimraf packages/*/*.tsbuildinfo",
+    "bootstrap": "npm-run-all clean bootstrap:install",
+    "bootstrap:install": "lerna bootstrap",
+    "test": "CI=true lerna run test --stream",
+    "dev": "lerna run --parallel dev",
+    "build": "npm-run-all build:*",
+    "build:lerna": "lerna run --parallel build"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.166",
+    "lerna": "^3.22.1",
+    "remotedev": "^0.2.9",
+    "tsdx": "^0.14.1",
+    "webpack-config": "^7.5.0"
+  }
+}

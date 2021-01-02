@@ -1,0 +1,67 @@
+{
+  "name": "@openforms/builder-app",
+  "productName": "RJSF Builder App",
+  "version": "1.0.0",
+  "description": "My Electron application description",
+  "main": ".webpack/main",
+  "types": ".webpack/main",
+  "files": [
+    ".webpack"
+  ],
+  "private": true,
+  "workspaces": {
+    "nohoist": [
+      "electron",
+      "electron/**",
+      "electron-squirrel-startup",
+      "electron-squirrel-startup/**",
+      "@electron-forge",
+      "@electron-forge/**"
+    ]
+  },
+  "scripts": {
+    "dev": "electron-forge start",
+    "clean": "npm-run-all clean:dist clean:tsbuildcache",
+    "clean:dist": "rimraf ./dist",
+    "clean:tsbuildcache": "rimraf tsconfig.build.tsbuildinfo",
+    "build": "npm-run-all clean build:forge",
+    "build:forge": "npm-run-all build:forge:*",
+    "build:forge:flatpak": "electron-forge make --target=@electron-forge/maker-flatpak",
+    "package": "electron-forge package",
+    "publish": "electron-forge publish",
+    "lint": "eslint --ext .ts ."
+  },
+  "keywords": [],
+  "author": {
+    "name": "Zenobius Jiricek",
+    "email": "airtonix@users.noreply.github.com"
+  },
+  "license": "MIT",
+  "config": {
+    "forge": "./forge.config.js"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.54",
+    "@electron-forge/maker-deb": "^6.0.0-beta.54",
+    "@electron-forge/maker-flatpak": "^6.0.0-beta.54",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.54",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
+    "@electron-forge/maker-zip": "^6.0.0-beta.54",
+    "@electron-forge/plugin-webpack": "6.0.0-beta.54",
+    "@marshallofsound/webpack-asset-relocator-loader": "^0.5.0",
+    "@typescript-eslint/eslint-plugin": "^4.0.1",
+    "@typescript-eslint/parser": "^4.0.1",
+    "css-loader": "^4.2.1",
+    "electron": "^11.1.1",
+    "eslint": "^7.6.0",
+    "eslint-plugin-import": "^2.20.0",
+    "fork-ts-checker-webpack-plugin": "^5.0.14",
+    "node-loader": "^1.0.1",
+    "style-loader": "^1.2.1",
+    "ts-loader": "^8.0.2",
+    "typescript": "^4.0.2"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0"
+  }
+}
